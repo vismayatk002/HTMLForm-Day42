@@ -29,7 +29,8 @@
             </div>
             <div>
                 <label for="number">Mobile number input type : </label>
-                <input type="number" id="number" name="number">
+                <input type="text" id="number" name="number">
+                <error-output class="mob-error" for="text"></error-output>
             </div>
             <div>
                 <label for="tel">Telphone input type : </label>
@@ -75,6 +76,18 @@
                 }
                 else{
                     emailError.textContent = "email is incorrect";
+                }
+            });
+
+            const mobNo = document.querySelector('#number');
+            const mobNoError = document.querySelector('.mob-error');
+            mobNo.addEventListener('input',function() {
+                let mobNoRegex = RegExp('^\\+(?:[0-9] ?){11}[0-9]$');
+                if(mobNoRegex.test(mobNo.value)){
+                    mobNoError.textContent = "";
+                }
+                else{
+                    mobNoError.textContent = "Mobile number is incorrect";
                 }
             });
 
