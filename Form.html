@@ -12,7 +12,7 @@
             <div>
                 <label for="text">text input type for Name : </label>
                 <input type="text" id="text" name="text">
-                <error-output class="text=error" for="text"></error-output>
+                <error-output class="text-error" for="text"></error-output>
             </div>
             <div>
                 <label for="pwd">Password input type : </label>
@@ -54,17 +54,17 @@
         </form>
         <script>
             const text = document.querySelector('#text');
-            const textError = document.querySelector('.textError');
+            const textError = document.querySelector('.text-error');
             text.addEventListener('input',function() {
-                let nameRegex = Regex('^[A-Z]{1}[a-z]{2,}$');
+                let nameRegex = RegExp('^[A-Z]{1}[a-z]{2,}$');
                 if(nameRegex.test(text.value)){
                     textError.textContent = "";
                 }
                 else{
-                    textError.textContent = "Name is Incorrect";
+                    textError.textContent = "Name is incorrect";
                 }
             });
-            const salary = document.querySelector('#slary');
+            const salary = document.querySelector('#salary');
             const output = document.querySelector('.salary-output');
             output.textContent = salary.value;
             salary.addEventListener('input',function() {
