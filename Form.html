@@ -36,13 +36,14 @@
             <div>
                 <label for="tel">Telphone input type : </label>
                 <input type="tel" id="tel" name="tel">
+                <error-output class="tel-error" for="text"></error-output>
             </div>
             <div>
                 <label for="search">Search input type : </label>
                 <input type="search" id="search" name="search">
             </div>
             <div class="nativeDateTimePcker">
-                <label for="party">Choose a Date and Time : </label>
+                <label for="Date">Choose a Date and Time : </label>
                 <input type="datetime-local" id="party" name="bday">
                 <span class="validity"></span>
             </div>
@@ -92,6 +93,18 @@
                 }
             });
 
+            const telNo = document.querySelector('#tel');
+            const telNoError = document.querySelector('.tel-error');
+            telNo.addEventListener('input',function() {
+                let telNoRegex = RegExp('[0-9]{3}-[0-9]{3}-[0-9]{4}');
+                if(telNoRegex.test(telNo.value)){
+                    telNoError.textContent = "";
+                }
+                else{
+                    telNoError.textContent = "Telephone number is incorrect";
+                }
+            });
+            
             const pwd = document.querySelector('#pwd');
             const pwdError = document.querySelector('.pwd-error');
             pwd.addEventListener('input',function() {
